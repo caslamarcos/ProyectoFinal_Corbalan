@@ -1,0 +1,10 @@
+.cartwidget {
+    display: flex;
+    align-items: center;
+}
+
+.logo-cartwidget{
+    width: 40px;
+    height: 40px;
+    color: white;
+}

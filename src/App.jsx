@@ -1,21 +1,32 @@
 import './App.css';
-import Navbar from "./components/NavBar";
-import ItemListContainer from './components/ItemListContainer';
+import Navbar from "./components/NavBar/NavBar";
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-//logica
+
+
 function App() {
-  
-  const saludo = "hola mundo"
 
-  //todo lo que es visual
-  
   return (
-      <div className = "app-container">
-        <NavBar />
-        <ItemListContainer saludo={ "Bienvenidos a mi ecomerce" } numero={ 5 } />
+     <BrowserRouter>
+       <div className = "app-container">
+        <Navbar />
+
+
+        <Routes>
+          <Route path="/" element={<ItemListContainer/>} />
+          <Route path="/category/:category" element={<ItemListContainer/>} />
+          <Route path="/detail/1" element={<ItemListContainer/>} />
+        
+
+        </Routes>
        
-      </div>
+       
+        </div>
+        
+      </BrowserRouter>
   ) 
 }
 
-export default App
+export default App;

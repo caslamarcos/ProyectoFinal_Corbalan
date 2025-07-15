@@ -1,0 +1,68 @@
+.navbar {
+  background-color: #292929;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  color: white;
+}
+
+.navbar .logo {
+  width: 80px;
+  height: auto;
+}
+
+.categories {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.categories .category {
+  position: relative;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  outline: none;
+  color: white;
+  text-decoration: none;
+  
+}
+
+/* Animación moderna en rojo al pasar el mouse o con el teclado */
+.categories .category:hover,
+.categories .category:focus {
+  color: #e50914;
+}
+
+.categories .category::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background-color: #e50914;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.categories .category:hover::after,
+.categories .category:focus::after {
+  transform: scaleX(1);
+}
+
+.cartwidget {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cartwidget h2 {
+  font-size: 16px;
+  margin: 0;
+}

@@ -1,10 +1,14 @@
-import carrito from "../assets/carrito.png";
+import "./cartwidget.css"
+import { GiShoppingCart } from "react-icons/gi";
 
 const CartWidget = () => {
   return (
     <div className="cartwidget"> 
-    <img src={carrito} width={50} height={50} alt="" />
+    
+    <GiShoppingCart className="logo-cartwidget"/>
+   
     <h2>10</h2>
+    
     
     
     </div>

@@ -1,7 +1,12 @@
-.app-container{
-background-color: rgb(69, 69, 69);
-
-
-
+body {
+  margin: 0;
+  background-color: #2e2e2e; 
+  color: #000000; 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+/*.app-container{
+background-color: rgb(255, 0, 0);
+
+}*/
 
