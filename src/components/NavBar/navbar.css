@@ -32,7 +32,7 @@
   
 }
 
-/* Animación moderna en rojo al pasar el mouse o con el teclado */
+/* Animación en rojo */
 .categories .category:hover,
 .categories .category:focus {
   color: #e50914;
