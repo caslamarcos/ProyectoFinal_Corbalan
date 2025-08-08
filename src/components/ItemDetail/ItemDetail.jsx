@@ -29,10 +29,6 @@ const ItemDetail = ({ product = {} }) => {
 
         <p>Stock disponible: {product.stock}</p>
 
-
-        {/* Acá iría el contador y el botón para agregar al carrito (si lo vas a hacer después) */}
-        {/* <ItemCount /> */}
-        {/* <button className="add-to-cart-btn">Agregar al carrito</button> */}
       </div>
     </div>
   );

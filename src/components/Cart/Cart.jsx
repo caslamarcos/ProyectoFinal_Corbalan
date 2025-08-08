@@ -1,38 +1,56 @@
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
-
+import "./Cart.css";
 
 const Cart = () => {
-    const {cart, totalPrice, deleteProductById} = useContext(CartContext);
+  const { cart, totalPrice, deleteProductById, clearCart } = useContext(CartContext);
+
   return (
-    <div>
+    <div className="cart-container">
+      <h2>Productos en el carrito</h2>
 
-        <h2>TU CARRITO DE COMPRAS:</h2>
-        
-        {
+      {cart.length === 0 ? (
+        <p>No hay productos en el carrito  </p>
+      ) : (
         cart.map((productCart) => (
-            
-            <div key={productCart.id} style={{display: "flex", justifyContent: "space-around", alignItems: "center", color: "white"}}>
-                
+          <div key={productCart.id} className="cart-item">
+            <img src={productCart.image} alt={productCart.name} />
 
-                <img src={productCart.image} alt="" width={200} />
-                <p>{productCart.name}</p>
-                <p>c/u ${productCart.price}</p>
-                <p>cantidad: {productCart.quantity}</p>
-                <p>Precio Parcial: ${productCart.price * productCart.quantity} </p>
-                <button onClick={ () => deleteProductById(productCart.id)}>Eliminar</button>
-
+            <div className="cart-item-info">
+              <span>{productCart.name}</span>
+              <span>precio c/u: ${productCart.price}</span>
+              <span>cantidad: {productCart.quantity}</span>
+              <span>
+                precio parcial: ${productCart.price * productCart.quantity}
+              </span>
             </div>
-        ))
-        }
-        <div>
-        
-        <Link to="/checkout">Continuar con mi compra</Link>
-        <p>Total de compra: ${totalPrice()}</p>
-        </div>
-    </div>
-  )
-}
 
-export default Cart
+            <button onClick={() => deleteProductById(productCart.id)}>
+              🗑️
+            </button>
+          </div>
+        ))
+      )}
+
+      {cart.length > 0 && (
+        <>
+          <div className="cart-total">
+            Precio total: ${totalPrice()} 
+          </div>
+          <div className="cart-buttons">
+          <button className="clear-cart-btn" onClick={clearCart}>
+          Vaciar carrito
+          </button>
+
+          <Link to="/checkout">
+            <button className="clear-cart-btn">Continuar con mi compra</button>
+          </Link>
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+
+export default Cart;

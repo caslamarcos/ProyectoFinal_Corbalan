@@ -1,40 +1,68 @@
 import { createContext, useState } from "react";
 
-//creamo el contexto al carrito
+//creamos el contexto al carrito
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-    const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([]);
 
-    
-    //tarea para casa agregar mediante condicional, sumarle el producto agregado al que ya esta en el carrito
-    const addProductInCart = (product) => {
-        setCart( [...cart, product] );
-    };
- 
-    const totalQuantity = () => {
-      const total = cart.reduce((total, product) => total + product.quantity, 0 );
-      return total;
-    };
+  const addProductInCart = (product) => {
+    setCart((prevCart) => {
+      const existingProductIndex = prevCart.findIndex(
+        (item) => item.id === product.id
+      );
 
-    const totalPrice = () => {
-      const total = cart.reduce ((total, product) => total + (product.price * product.quantity), 0);
-      return total;  
-    }
+      if (existingProductIndex !== -1) {
 
-    const deleteProductById = (id) => {
-       const productsFilter = cart.filter((product)=> product.id !== id );
-       setCart(productsFilter);
-    }
+        const updatedCart = [...prevCart];
 
-    //abajo de precio total eliminar todos los productos de una con boton
+        updatedCart[existingProductIndex].quantity += product.quantity;
 
+        return updatedCart;
 
-    return (
-        <CartContext.Provider value={{ cart, addProductInCart, totalQuantity, totalPrice, deleteProductById }}>
-            {children}
-        </CartContext.Provider>
-    )
+      } else {
+        
+        return [...prevCart, product];
+      }
+    });
+  };
+
+  const totalQuantity = () => {
+    const total = cart.reduce((total, product) => total + product.quantity, 0);
+    return total;
+  };
+
+  const totalPrice = () => {
+    const total = cart.reduce(
+      (total, product) => total + product.price * product.quantity,
+      0
+    );
+    return total;
+  };
+
+  const deleteProductById = (id) => {
+    const productsFilter = cart.filter((product) => product.id !== id);
+    setCart(productsFilter);
+  };
+
+  const clearCart = () => {
+  setCart([]);
 };
 
-export {CartContext, CartProvider}; 
+  return (
+    <CartContext.Provider
+      value={{
+        cart,
+        addProductInCart,
+        totalQuantity,
+        totalPrice,
+        deleteProductById,
+        clearCart,
+      }}>
+    
+      {children}
+    </CartContext.Provider>
+  );
+};
+
+export { CartContext, CartProvider };

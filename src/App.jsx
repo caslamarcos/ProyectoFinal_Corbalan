@@ -29,12 +29,18 @@ function App() {
 
         </Routes>
        
+       <footer className="footer">
+         <p>© 2025 Marcos Corbalán. Todos los derechos reservados.</p>
+       </footer>
        
         </div>
         
      </CartProvider>
       </BrowserRouter>
+
+      
   ) 
 }
+
 
 export default App;
