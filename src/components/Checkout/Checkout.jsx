@@ -3,7 +3,7 @@ import { CartContext } from "../../context/CartContext";
 import FormCheckout from "../FormCheckout/FormCheckout";
 import { addDoc, collection } from "firebase/firestore";
 import db from "../../db/db.js";
-import "./checkout.css"
+import "./Checkout.css"
 
 const Checkout = () => {
   const [dataForm, setDataForm] = useState ({
@@ -50,7 +50,7 @@ uploadOrder(order);
     <div className="checkout">
         {
           orderId ? (
-            <div>
+            <div className="confirmation">
                 <h2>Orden generada correctamente!</h2>
                 <p>guarde el identificador de su orden: {orderId}</p>
             </div>
