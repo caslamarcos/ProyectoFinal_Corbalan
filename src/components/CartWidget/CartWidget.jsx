@@ -1,4 +1,4 @@
-import "./cartwidget.css"
+import "./Cartwidget.css"
 import { GiShoppingCart } from "react-icons/gi";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
